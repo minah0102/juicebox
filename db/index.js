@@ -259,16 +259,12 @@ async function addTagsToPost(postId, tagList) {
 
 async function getAllTags() {
   try{
-    const { rows: allTags } = await client.query(`
+    const { rows } = await client.query(`
     SELECT *
     FROM tags;
     `);
 
-    const tags = await Promise.all(allTags.map(
-      tag => createTags(tag.tagList)
-    ));
-
-    return tags;
+    return rows;
   } catch (error) {
     throw error;
   }
