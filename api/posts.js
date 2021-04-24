@@ -12,14 +12,6 @@ postsRouter.use((req, res, next) => {
 });
 
 postsRouter.get('/', async (req, res) => {
-  const posts = await getAllPosts();
-
-  res.send({
-    posts
-  });
-});
-
-postsRouter.get('/', async (req, res) => {
   try {
     const allPosts = await getAllPosts();
 
