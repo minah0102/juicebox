@@ -74,7 +74,7 @@ async function getUserById(userId) {
       return null
     }
     console.log("see user id??", userId);
-    
+
     user.posts = await getPostsByUser(userId);
 
     return user;
@@ -173,7 +173,7 @@ async function getAllPosts() {
 
 async function getPostsByUser(userId) {
   try {
-    const { rows: postIds } = client.query(`
+    const { rows: postIds } = await client.query(`
         SELECT * 
 				FROM posts
         WHERE "authorId"=${userId};
