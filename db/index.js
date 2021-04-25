@@ -67,13 +67,14 @@ async function getUserById(userId) {
     const { rows: [user] } = await client.query(`
       SELECT id, username, name, location, active
       FROM users
-      WHERE id=${userId}
+      WHERE id=${userId};
       `);
 
     if (!user) {
       return null
     }
-
+    console.log("see user id??", userId);
+    
     user.posts = await getPostsByUser(userId);
 
     return user;
